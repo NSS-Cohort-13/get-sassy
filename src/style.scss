@@ -1,5 +1,25 @@
-$primary-color: pink;
+$primary-color: orange;
 
 h1 {
   color: $primary-color;
+}
+
+.sassy {
+  color: green;
+  li {
+    list-style: kannada;
+    &:nth-of-type(2n) {
+      color: red;
+    }
+  }
+}
+
+.unsassy {
+  color: blue;
+  li {
+    list-style: square;
+    &:nth-of-type(2n) {
+      color: red;
+    }
+  }
 }
