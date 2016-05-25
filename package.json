@@ -1,0 +1,30 @@
+{
+  "name": "get-sassy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NSS-Cohort-13/get-sassy.git"
+  },
+  "keywords": [],
+  "author": "Scott Humphries <npm@sscotth.io> (https://sscotth.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NSS-Cohort-13/get-sassy/issues"
+  },
+  "homepage": "https://github.com/NSS-Cohort-13/get-sassy#readme",
+  "devDependencies": {
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-sass": "^2.3.1",
+    "gulp-sass-lint": "^1.1.1",
+    "jshint": "^2.9.2",
+    "jshint-stylish": "^2.2.0",
+    "node-sass": "^3.7.0"
+  }
+}
