@@ -5,6 +5,7 @@ const gulp = require('gulp')
 const jshint = require('gulp-jshint')
 const sass = require('gulp-sass')
 const sassLint = require('gulp-sass-lint')
+const runSequence = require('run-sequence')
 
 const sourcePath = './src'
 const distributionPath = './dist'
@@ -21,10 +22,10 @@ gulp.task('clean', () => (
 // Static file Tasks
 
 gulp.task('static:watch', () => (
-   gulp.watch(staticPath, ['static:copy'])
+   gulp.watch(staticPath, ['build'])
 ))
 
-gulp.task('static:copy', ['clean'], () => (
+gulp.task('static:copy', () => (
   gulp.src(staticPath)
     .pipe(gulp.dest(distributionPath))
 ))
@@ -43,14 +44,11 @@ gulp.task('js:lint', () => (
 
 // Sass Tasks
 
-const sassCompile = () => {
+gulp.task('sass:compile', () => (
   gulp.src(sassPath)
     .pipe(sass())
     .pipe(gulp.dest(distributionPath))
-}
-
-gulp.task('sass:compileAndClean', ['clean'], sassCompile)
-gulp.task('sass:compile', sassCompile)
+))
 
 gulp.task('sass:lint', () => (
   gulp.src(sassPath)
@@ -65,7 +63,11 @@ gulp.task('sass:watch', () => (
   )
 ))
 
-gulp.task('build', ['clean', 'sass:compileAndClean', 'static:copy'])
-gulp.task('watch', ['static:watch', 'js:watch', 'sass:watch'])
+// Composed Tasks
+
+gulp.task('build', () => (
+  runSequence('clean', ['sass:compile', 'static:copy'])
+))
+gulp.task('watch', ['build', 'static:watch', 'js:watch', 'sass:watch'])
 gulp.task('lint', ['js:lint', 'sass:lint'])
 gulp.task('default', ['build'])
