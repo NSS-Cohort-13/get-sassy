@@ -1,0 +1,9 @@
+.sassy {
+  color: green;
+  li {
+    list-style: kannada;
+    @include even() {
+      color: purple;
+    }
+  }
+}

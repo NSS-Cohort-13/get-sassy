@@ -1,0 +1,9 @@
+.unsassy {
+  color: blue;
+  li {
+    list-style: square;
+    @include even() {
+      color: brown;
+    }
+  }
+}
