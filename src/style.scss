@@ -4,12 +4,18 @@ h1 {
   color: $primary-color;
 }
 
+@mixin even() {
+  &:nth-of-type(2n) {
+    @content
+  }
+}
+
 .sassy {
   color: green;
   li {
     list-style: kannada;
-    &:nth-of-type(2n) {
-      color: red;
+    @include even() {
+      color: purple;
     }
   }
 }
@@ -18,8 +24,8 @@ h1 {
   color: blue;
   li {
     list-style: square;
-    &:nth-of-type(2n) {
-      color: red;
+    @include even() {
+      color: brown;
     }
   }
 }
